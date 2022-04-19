@@ -12,18 +12,23 @@ function Table() {
   }, []);
   // segundo map feito com a ajuda do Imar Mendes e Danillo
   return (
-    <table className={ styles.Table__container }>
-      <thead className="Table__header">
-        <tr>
+    <table className={ styles.container }>
+      <thead className={ styles.header }>
+        <tr className={ styles.header_tr }>
           {tHeader.map((key) => key !== 'residents' && (
-            <th key={ key }>{key}</th>))}
+            <th clallName={ styles.header_content } key={ key }>{key}</th>))}
         </tr>
       </thead>
-      <tbody>
+      <tbody className={ styles.body }>
         {filterByNameResult.map((elem) => (
-          <tr key={ elem.name }>
+          <tr className={ styles.body_tr } key={ elem.name }>
             {keys.map((key) => key !== 'residents' && (
-              <td key={ elem[key] }>{ elem[key] }</td>))}
+              <td
+                className={ styles.body_td }
+                key={ elem[key] }
+              >
+                { elem[key] }
+              </td>))}
           </tr>
         ))}
       </tbody>

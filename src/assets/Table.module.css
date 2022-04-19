@@ -1,7 +1,23 @@
-.Table__container {
-  width: 90%;
+.container {
+  border: 1px dashed gray;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin: 12px auto;
 }
 
-td {
+.header {
   background-color: #444;
+  height: 20px;
+  width: 95vw;
+}
+
+.header_tr {
+  margin: 12px;
+  padding: 4px;
+}
+
+.header_th, .body_td {
+  border-bottom: 1px dashed gray;
+  padding: 10px;
+  text-align: center;
 }

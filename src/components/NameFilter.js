@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import PlanetContext from '../context/PlanetContext';
+import styles from '../assets/NameFilter.module.css';
 
 function NameFilter() {
   const {
@@ -13,18 +14,19 @@ function NameFilter() {
     const byName = results
       .filter((elem) => elem.name.includes(filterByName.name));
     setFilterByNameResult(byName);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterByName]);
 
   return (
-    <form>
-      <label htmlFor="nameFilter">
+    <form className={ styles.container }>
+      <label className={ styles.label } htmlFor="nameFilter">
+        Filtro 1:
         <input
+          className={ styles.input }
           data-testid="name-filter"
           id="nameFilter"
           type="text"
           name="filterByName"
-          placeholder="Filtrar por nome"
+          placeholder="Filtrar por Planeta"
           value={ filterByName.name }
           onChange={ (event) => setFilterByName({ name: event.target.value }) }
         />
