@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Planets from './components/Planets';
+import Planets from './pages/Planets';
 import PlanetProvider from './context/PlanetProvider';
 
 function App() {

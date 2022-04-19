@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import PlanetContext from '../context/PlanetContext';
-import Table from './Table';
+import Table from '../components/Table';
+import NameFilter from '../components/NameFilter';
 
 function Planets() {
   const { requestPlanets } = useContext(PlanetContext);
@@ -12,7 +13,7 @@ function Planets() {
 
   return (
     <>
-      <p>Planetas aqui!</p>
+      <NameFilter />
       <Table />
     </>
   );

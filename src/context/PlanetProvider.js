@@ -5,11 +5,14 @@ import PlanetContext from './PlanetContext';
 
 function PlanetProvider({ children }) {
   const [results, setResults] = useState([]);
+  const [filterByName, setFilterByName] = useState({ name: '' });
+  const [filterByNameResult, setFilterByNameResult] = useState([]);
 
   async function requestPlanets() {
     try {
       const data = await fetchPlanets();
       setResults(data.results);
+      setFilterByNameResult(data.results);
     } catch (error) {
       console.log(error);
     }
@@ -17,6 +20,10 @@ function PlanetProvider({ children }) {
 
   const contextValue = {
     results,
+    filterByName,
+    filterByNameResult,
+    setFilterByNameResult,
+    setFilterByName,
     requestPlanets,
   };
 
