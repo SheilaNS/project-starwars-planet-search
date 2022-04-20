@@ -7,6 +7,12 @@ function PlanetProvider({ children }) {
   const [results, setResults] = useState([]);
   const [filterByName, setFilterByName] = useState({ name: '' });
   const [filterByNameResult, setFilterByNameResult] = useState([]);
+  const [filterByNumericValues, setFilterByNumericValues] = useState([]);
+  const [filterState, setFilterState] = useState({
+    column: 'population',
+    comparison: 'maior que',
+    value: 0,
+  });
 
   async function requestPlanets() {
     try {
@@ -22,6 +28,10 @@ function PlanetProvider({ children }) {
     results,
     filterByName,
     filterByNameResult,
+    filterByNumericValues,
+    filterState,
+    setFilterState,
+    setFilterByNumericValues,
     setFilterByNameResult,
     setFilterByName,
     requestPlanets,

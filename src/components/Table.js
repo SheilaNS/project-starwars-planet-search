@@ -16,7 +16,7 @@ function Table() {
       <thead className={ styles.header }>
         <tr className={ styles.header_tr }>
           {tHeader.map((key) => key !== 'residents' && (
-            <th clallName={ styles.header_content } key={ key }>{key}</th>))}
+            <th className={ styles.header_content } key={ key }>{key}</th>))}
         </tr>
       </thead>
       <tbody className={ styles.body }>
