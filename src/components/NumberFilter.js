@@ -7,7 +7,8 @@ function NumberFilter() {
     filterByNumericValues,
     setFilterByNumericValues,
     setFilterByNameResult,
-    results,
+    filterByNameResult,
+    // results,
     filterState,
     setFilterState,
   } = useContext(PlanetContext);
@@ -44,7 +45,7 @@ function NumberFilter() {
   }
 
   useEffect(() => {
-    const byNumber = results
+    const byNumber = filterByNameResult
       .reduce((acc, elem) => {
         Object.keys(elem)
           .forEach((key) => {
