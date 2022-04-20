@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import PlanetContext from '../context/PlanetContext';
+import styles from '../assets/NumberFilter.module.css';
 
 function NumberFilter() {
   const {
@@ -58,11 +59,12 @@ function NumberFilter() {
 
   return (
     <>
-      <h2>Filtro 2</h2>
-      <form>
-        <label htmlFor="column-filter">
+      <h2 className={ styles.title }>Filtro 2</h2>
+      <form className={ styles.container }>
+        <label htmlFor="column-filter" className={ styles.label }>
           Coluna:
           <select
+            className={ styles.select }
             id="column-filter"
             data-testid="column-filter"
             name="column"
@@ -82,9 +84,10 @@ function NumberFilter() {
             }
           </select>
         </label>
-        <label htmlFor="comparison-filter">
+        <label htmlFor="comparison-filter" className={ styles.label }>
           Comparação:
           <select
+            className={ styles.select }
             id="comparison-filter"
             data-testid="comparison-filter"
             name="comparison"
@@ -104,9 +107,10 @@ function NumberFilter() {
             }
           </select>
         </label>
-        <label htmlFor="value-filter">
+        <label htmlFor="value-filter" className={ styles.label }>
           Quantidade:
           <input
+            className={ styles.input }
             type="number"
             data-testid="value-filter"
             name="value"
@@ -117,6 +121,7 @@ function NumberFilter() {
           />
         </label>
         <button
+          className={ styles.button }
           type="button"
           data-testid="button-filter"
           onClick={ handleClick }
