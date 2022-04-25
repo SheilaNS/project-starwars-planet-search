@@ -40,3 +40,7 @@
 .button:hover {
   cursor: pointer;
 }
+
+.filterList {
+  color: var(--main-color);
+}

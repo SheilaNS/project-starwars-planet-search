@@ -13,17 +13,44 @@ function NumberFilter() {
     setFilterState,
   } = useContext(PlanetContext);
   const columnFilter = [
-    { value: 'population', name: 'population' },
-    { value: 'orbital_period', name: 'orbital_period' },
-    { value: 'diameter', name: 'diameter' },
-    { value: 'rotation_period', name: 'rotation_period' },
-    { value: 'surface_water', name: 'surface_water' },
+    'population',
+    'orbital_period',
+    'diameter',
+    'rotation_period',
+    'surface_water',
   ];
   const comparisonFilter = [
-    { value: 'maior que' },
-    { value: 'menor que' },
-    { value: 'igual a' },
+    'maior que',
+    'menor que',
+    'igual a',
   ];
+  let arrayFilter = columnFilter;
+
+  // lógica de filtro do requisito 05 feita com a ajuda do Danillo
+  function optionGen(array) {
+    if (filterByNumericValues.length !== 0) {
+      filterByNumericValues.forEach((elem) => {
+        arrayFilter = arrayFilter.filter((column) => elem.column !== column);
+      });
+      return arrayFilter.map((elem, index) => (
+        <option
+          value={ elem }
+          key={ index }
+        >
+          {elem}
+        </option>
+      ));
+    }
+    // retorno da função
+    return array.map((elem, index) => (
+      <option
+        value={ elem }
+        key={ index }
+      >
+        {elem}
+      </option>
+    ));
+  }
 
   function handleClick() {
     setFilterByNumericValues([...filterByNumericValues, filterState]);
@@ -55,6 +82,11 @@ function NumberFilter() {
         return acc;
       }, []);
     setFilterByNameResult(byNumber);
+    setFilterState({
+      column: arrayFilter[0],
+      comparison: comparisonFilter[0],
+      value: 0,
+    });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filterByNumericValues]);
 
@@ -73,16 +105,7 @@ function NumberFilter() {
             onChange={ (event) => setFilterState({ ...filterState,
               column: event.target.value }) }
           >
-            {
-              columnFilter.map((elem) => (
-                <option
-                  value={ elem.value }
-                  key={ elem.value }
-                >
-                  {elem.name}
-                </option>
-              ))
-            }
+            { optionGen(columnFilter) }
           </select>
         </label>
         <label htmlFor="comparison-filter" className={ styles.label }>
@@ -97,12 +120,12 @@ function NumberFilter() {
               comparison: event.target.value }) }
           >
             {
-              comparisonFilter.map((elem) => (
+              comparisonFilter.map((elem, index) => (
                 <option
-                  value={ elem.value }
-                  key={ elem.value }
+                  value={ elem }
+                  key={ index }
                 >
-                  {elem.value}
+                  {elem}
                 </option>
               ))
             }
@@ -130,6 +153,15 @@ function NumberFilter() {
           Filtrar
         </button>
       </form>
+      { filterByNumericValues && (
+        <ul className={ styles.filterList }>
+          { filterByNumericValues.map((elem) => (
+            <li key={ elem.column }>
+              { `${elem.column} ${elem.comparison} ${elem.value}` }
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }
